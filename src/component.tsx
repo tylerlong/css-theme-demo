@@ -1,6 +1,7 @@
 import React from 'react';
 
-import 'github-markdown-css/github-markdown.css';
+import * as darkStyles from './github-markdown-dark.module.css';
+import * as lightStyles from './github-markdown-light.module.css';
 
 const Component = (props: {
   theme: 'dark' | 'light' | 'auto';
@@ -13,9 +14,11 @@ const Component = (props: {
         ? 'dark'
         : 'light'
       : theme;
+  const styles = theme === 'light' ? lightStyles : darkStyles;
   return (
-    <article className="markdown-body" data-theme={theme}>
+    <article className={styles['markdown-body']} data-theme={theme}>
       <h1>{props.title}</h1>
+      <p>Hello world!</p>
     </article>
   );
 };
